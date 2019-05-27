@@ -240,6 +240,10 @@ Resources
 - Since typically programs are optimized by manipulating an intermediate representation (IR), the term Low Level Virtual Machine (LLVM) was coined.
 - Since then LLVM developed to an umbrella project, featuring A core project as well as other subprojects concerned with the development of the `clang` front-end and various tools
 
+Resources
+
+- [Code generation to LLVM IR](https://llvm.org/docs/tutorial/LangImpl03.html)
+
 #### Features
 
 - Optimizer

@@ -1,7 +1,7 @@
 set(CMAKE_CXX_STANDARD 17)
 
 
-# USe package antlr4-runtime
+# Use package antlr4-runtime
 # See also https://github.com/antlr/antlr4/blob/master/runtime/Cpp/cmake/Antlr4Package.md#the-antlr4-runtime-package
 
 find_package(
@@ -14,7 +14,7 @@ message(STATUS "ANTLR include dirs: ${ANTLR4_INCLUDE_DIRS}")
 include_directories(${ANTLR4_INCLUDE_DIR})
 
 
-# USe package antlr4-generator
+# Use package antlr4-generator
 # See also https://github.com/antlr/antlr4/blob/master/runtime/Cpp/cmake/Antlr4Package.md#the-antlr4-generator-package
 
 find_package(
@@ -49,13 +49,15 @@ add_definitions(${LLVM_DEFINITIONS})
 llvm_map_components_to_libnames(llvm_libs core support bitwriter)
 
 
+# Compile and link
+
 add_executable(
-    Main main.cpp DemoGenerator.cpp
+    generator main.cpp DemoGenerator.cpp
     ${ANTLR4_SRC_FILES_DemoGrammar}
 )
 
 target_link_libraries(
-    Main
+    generator
     antlr4_static
     ${llvm_libs}
 )

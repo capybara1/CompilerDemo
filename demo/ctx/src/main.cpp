@@ -11,8 +11,14 @@ using namespace compilerdemo;
 
 int main(int argc, char** argv) {
 
+    if (argc != 2)
+    {
+        std::cerr << "ERROR. Enter a file name";
+        return 1;
+    }
+
     std::ifstream stream;
-    stream.open(argv[0]);
+    stream.open(argv[1]);
 
     antlr4::ANTLRInputStream input(stream);
     DemoLexer lexer(&input);

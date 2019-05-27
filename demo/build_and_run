@@ -1,0 +1,1 @@
+docker build . -t dev && docker run --rm -it --name Dev dev

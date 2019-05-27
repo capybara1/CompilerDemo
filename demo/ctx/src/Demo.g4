@@ -83,8 +83,13 @@ integerLiteral
     ;
     
 stringLiteral
+    :   STRING
+    ;
+
+STRING
     :   '"' CHAR* '"'
     ;
+
 
 fragment
 CHAR
@@ -108,7 +113,6 @@ HEXADECIMAL_ESCAPE_SEQUENCE
     :   '\\x' HEXADECIMAL_DIGIT+
     ;
 
-fragment
 NUMBER
     :   [0-9]+
     ;

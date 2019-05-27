@@ -223,13 +223,8 @@ void DemoGenerator::enterIntegerLiteral(DemoParser::IntegerLiteralContext* ctx)
 
 void DemoGenerator::enterStringLiteral(DemoParser::StringLiteralContext* ctx)
 {
-    auto stringLength = ctx->CHAR().size();
-    char buffer[stringLength + 1];
-    buffer[stringLength] = '\0';
-    for (std::vector<antlr4::tree::TerminalNode *> ::size_type i = 0; i < stringLength; i++) {
-        buffer[i] = ctx->CHAR(1)->getText()[0];
-    }
-    auto result = this->builder.CreateGlobalString(buffer);
+    auto literalString = ctx->STRING()->getText();
+    auto result = this->builder.CreateGlobalString(literalString);
 
     this->valueStack.push(result);
 }

@@ -1,7 +1,4 @@
-FROM capybara1/compiler-dev AS build
-RUN apt-get install -y nano git pkg-config uuid-dev \
- && git config --global user.email "john.doe@example.com" \
- && git config --global user.name "John Doe"
+FROM capybara1/compiler-dev:latest AS build
 COPY ctx /root/CompilerDemo/
 WORKDIR /root/CompilerDemo/build
 ENTRYPOINT ["/usr/bin/bash"]

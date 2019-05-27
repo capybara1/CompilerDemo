@@ -81,7 +81,7 @@ void DemoGenerator::emitStartMainFunction()
         mainFunctionType,
         llvm::Function::ExternalLinkage,
         "main",
-        (this->module));
+        *(this->module));
 
     this->mainFunction->setCallingConv(llvm::CallingConv::C);
 
@@ -117,7 +117,7 @@ void DemoGenerator::enterAssignment(DemoParser::AssignmentContext* ctx)
     auto it = this->namedAllocations.find(variableName);
     if (it != this->namedAllocations.end())
     {
-        allocation = it->first;
+        allocation = it->second;
     }
     else
     {
@@ -216,7 +216,7 @@ void DemoGenerator::enterIntegerLiteral(DemoParser::IntegerLiteralContext* ctx)
 {
     auto literalString = ctx->NUMBER()->getText();
     auto value = std::stod(literalString);
-    auto result = llvm::ConstantFP::get(this->context, llvm::APFloat(value))
+    auto result = llvm::ConstantFP::get(this->context, llvm::APFloat(value));
 
     this->valueStack.push(result);
 }

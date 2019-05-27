@@ -66,11 +66,12 @@ public:
 
     virtual void enterStringLiteral(DemoParser::StringLiteralContext* ctx) override;
 
+    void writeBitcodeToFile(std::string filePath);
+
 private:
 
-    void writeBitcodeToFile(std::string filePath);
     void emitGlobalConstants();
-    void emitPrintfFunction();
+    void emitPrintFunction();
     void emitStartMainFunction();
 };
 

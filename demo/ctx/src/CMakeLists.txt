@@ -3,16 +3,16 @@
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
-
 set(CMAKE_CXX_STANDARD 17)
 
+
 add_definitions(-DANTLR4CPP_STATIC)
-
 set(ANTLR4_WITH_STATIC_CRT OFF)
-
 include(ExternalAntlr4Cpp)
+message(STATUS "ANTLR include dirs: ${ANTLR4_INCLUDE_DIRS}")
 
 include_directories(${ANTLR4_INCLUDE_DIRS})
+
 
 set(ANTLR_EXECUTABLE /usr/local/lib/antlr-4.7.2-complete.jar)
 find_package(ANTLR REQUIRED)
@@ -36,14 +36,11 @@ add_definitions(${LLVM_DEFINITIONS})
 llvm_map_components_to_libnames(llvm_libs core support bitwriter)
 
 
-add_library(
-    Generator DemoGenerator.cpp
+add_executable(
+    Main main.cpp DemoGenerator.cpp
     ${ANTLR_DemoGrammar_CXX_OUTPUTS})
-
-add_executable(Main main.cpp)
 
 target_link_libraries(
     Main
-    Generator
     antlr4_static
     ${llvm_libs})

@@ -389,3 +389,17 @@ opt -load path/to/DemoPass.so -name_of_the_pass < input.bc
 - [Introduction to LLVM Building simple program analysis tools and instrumentation](https://www.youtube.com/watch?v=VKIv_Bkp4pk)
 - [YOW! 2016 Erik Corry - Building Your Own Compiler The Slightly Easier Way With LLVM](https://www.youtube.com/watch?v=2PVRX1ug_fk)
 - [My First LLVM Compiler](http://www.wilfred.me.uk/blog/2015/02/21/my-first-llvm-compiler/)
+
+## Demo Compiler
+
+Build demo
+
+1. Install ANTLR into `demo` directory
+2. Install LLVM from source
+3. Build demo using the following commands
+
+```bash
+cd demo
+cmake .
+cmake --build .
+```
